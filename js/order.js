@@ -26,7 +26,7 @@ Order.prototype.addLineItem = function() {
 Order.prototype.createPackingList = function() {
   var $packingList = new PackingList(this);
   $packingList.createBoxNumbers();
-  // $packingList.createHtml();
+  $packingList.createHtml();
 }
 
 $(function() {

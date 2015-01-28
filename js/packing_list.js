@@ -12,12 +12,15 @@ PackingList.prototype.createBoxNumbers = function() {
     var lengthPerBox = rollsPerBox * lineItems[i].rollLength();
     var noOfBoxes = lineItems[i].totalLength() / lengthPerBox;
     var noOfCompleteBoxes = parseInt(noOfBoxes);
-    debugger
-    lineItems[i].boxNumbers.push(((++this.boxCounter).toString() + '--' + (this.boxCounter += (noOfCompleteBoxes - 1)).toString()));
+    lineItems[i].boxNumbers.push(++this.boxCounter, '--', (this.boxCounter += (noOfCompleteBoxes - 1)));
     if(!(noOfBoxes % 1 == 0)) {
       this.boxCounter++;
-      lineItems[i].boxNumbers.push(this.boxCounter.toString());
+      lineItems[i].boxNumbers.push(this.boxCounter);
     }
     console.log(lineItems[i].boxNumbers);
   }
+}
+
+PackingList.prototype.createHtml = function() {
+
 }
