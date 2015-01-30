@@ -50,3 +50,11 @@ LineItem.prototype.totalLength = function() {
   return parseInt(this.$row.find('.total_length').first().val());
 }
 
+LineItem.prototype.totalBoxes = function() {
+  var noOfBoxes = 0;
+  noOfBoxes += (this.boxNumbers[2] - this.boxNumbers[0] + 1);
+  if(this.boxNumbers[3]) {
+    noOfBoxes++;
+  }
+  return noOfBoxes;
+}
