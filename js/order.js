@@ -1,13 +1,13 @@
 function Order(orderId) {
   this.$order = $(orderId);
-  this.lineItems = [];
+  this.sizes = [];
 }
 
 
 Order.prototype.bindEvents = function(addButtonId, createPackingListButtonId) {
   var _this = this;
   $(addButtonId).on('click', function() {
-    _this.addLineItem();
+    _this.addSize();
   });
 
   $(createPackingListButtonId).on('click', function() {
@@ -15,17 +15,17 @@ Order.prototype.bindEvents = function(addButtonId, createPackingListButtonId) {
   });
 }
 
-Order.prototype.addLineItem = function() {
-  var $lineItem = new LineItem();
-  this.$order.append($lineItem.$row);
-  this.lineItems.push($lineItem);
-  $lineItem.$row.get(0).scrollIntoView();
-  $lineItem.$row.find('.width').focus();
+Order.prototype.addSize = function() {
+  var $size = new Size();
+  this.$order.append($size.$row);
+  this.sizes.push($size);
+  $size.$row.get(0).scrollIntoView();
+  $size.$row.find('.width').focus();
 }
 
 Order.prototype.createPackingList = function() {
   var $packingList = new PackingList(this);
-  $packingList.createBoxNumbers();
+  $packingList.createBoxes();
   var $packingListDiv = $('#packing-list')
   $packingListDiv.empty();
   $packingListDiv.append($packingList.createHtml());
@@ -35,8 +35,8 @@ Order.prototype.createPackingList = function() {
 $(function() {
   var order = new Order('#order');
   order.bindEvents('#addRows', '#createList');
-  var firstLineItem = new LineItem();
-  order.lineItems.push(firstLineItem);
-  order.$order.append(firstLineItem.$row)
-  firstLineItem.$row.find('.width').focus();
+  var firstSize = new Size();
+  order.sizes.push(firstSize);
+  order.$order.append(firstSize.$row)
+  firstSize.$row.find('.width').focus();
 });
