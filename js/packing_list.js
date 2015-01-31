@@ -21,7 +21,11 @@ PackingList.prototype.createHtml = function() {
     .append($('<th>').html('Dimensions'))
     .append($('<th>').html('Total Boxes'))
     .append($('<th>').html('Net Weight'))
-    .append($('<th>').html('Gross Weight'));
+    .append($('<th>').html('Gross Weight'))
+    .append($('<th>').html('Sheets In Each Box'))
+    .append($('<th>').html('Length In Each Box'))
+    .append($('<th>').html('Total Sheets'))
+    .append($('<th>').html('Total Length'));
   var sizes = this.$order.sizes;
   var row = null;
   for(var i in this.boxGroups) {
@@ -36,17 +40,19 @@ PackingList.prototype.createRow = function(boxGroup) {
   if(boxGroup.noOfBoxes == 1) {
     var boxNumberString = boxGroup.startingBox;
   } else {
-    var boxNumberString = [boxGroup.startingBox, boxGroup.startingBox + boxGroup.noOfBoxes - 1].join(' -- ');
+    var boxNumberString = [boxGroup.startingBox, boxGroup.startingBox + boxGroup.noOfBoxes - 1].join(' - ');
   }
-  var totalBoxes = boxGroup.noOfBoxes;
-  var rollsPerBox = boxGroup.noOfRollsPerBox;
   var netWeightOfBox = boxGroup.netWeightOfEachBox;
   var grossWeightOfBox = netWeightOfBox + 0.9;
   tr.append($('<td>').html(boxNumberString));
   var dimensionString = [boxGroup.$size.rollWidth(), 'x', boxGroup.$size.rollThickness()].join(' ');
   tr.append($('<td>').html(dimensionString));
-  tr.append($('<td>').html(totalBoxes));
-  tr.append($('<td>').html(netWeightOfBox));
-  tr.append($('<td>').html(grossWeightOfBox));
+  tr.append($('<td>').html(boxGroup.noOfBoxes));
+  tr.append($('<td>').html(netWeightOfBox.toFixed(2)));
+  tr.append($('<td>').html(grossWeightOfBox.toFixed(2)));
+  tr.append($('<td>').html(boxGroup.noOfRollsPerBox));
+  tr.append($('<td>').html(boxGroup.lengthPerBox));
+  tr.append($('<td>').html(boxGroup.noOfRollsPerBox * boxGroup.noOfBoxes));
+  tr.append($('<td>').html(boxGroup.lengthPerBox * boxGroup.noOfBoxes));
   return tr;
 }
