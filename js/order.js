@@ -26,10 +26,12 @@ Order.prototype.addSize = function() {
 Order.prototype.createPackingList = function() {
   var $packingList = new PackingList(this);
   $packingList.createBoxes();
-  var $packingListDiv = $('#packing-list')
+  var $packingListDiv = $('<div>', { id: 'packing-list'});
   $packingListDiv.empty();
   $packingListDiv.append($packingList.createHtml());
-  $packingListDiv.get(0).scrollIntoView();
+  var newWindow = window.open('');
+  newWindow.document.write('<link rel="stylesheet" href="./css/bootstrap.min.css">');
+  newWindow.document.write($packingListDiv.get(0).outerHTML);
 }
 
 $(function() {

@@ -2,6 +2,7 @@ function PackingList(order) {
   this.boxCounter = 0;
   this.$order = order;
   this.boxGroups = [];
+  this.totalNetWeight = 0;
 }
 
 PackingList.prototype.createBoxes = function() {
@@ -43,6 +44,7 @@ PackingList.prototype.createRow = function(boxGroup) {
     var boxNumberString = [boxGroup.startingBox, boxGroup.startingBox + boxGroup.noOfBoxes - 1].join(' - ');
   }
   var netWeightOfBox = boxGroup.netWeightOfEachBox;
+  this.totalNetWeight += netWeightOfBox;
   var grossWeightOfBox = netWeightOfBox + 0.9;
   tr.append($('<td>').html(boxNumberString));
   var dimensionString = [boxGroup.$size.rollWidth(), 'x', boxGroup.$size.rollThickness()].join(' ');

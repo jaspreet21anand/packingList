@@ -1,22 +1,22 @@
 function Size() {
-  this.$row = $('<div>', { class: 'row' }).
-              append($("<br>\
-                      <div class='col-md-2'>\
-                        <input type='text' class='form-control width' placeholder='width'>\
-                      </div>\
-                      <div class='col-md-2'>\
-                        <input type='text' class='form-control thickness' placeholder='Thickness'>\
-                      </div>\
-                      <div class='col-md-3'>\
-                        <input type='text' class='form-control total_length' placeholder='Total Length in mtrs'>\
-                      </div>\
-                      <div class='col-md-2'>\
-                        <input type='text' class='form-control lengthPerRole' placeholder='Length/Roll in mtrs'>\
-                      </div>\
-                      <div class='col-md-3'>\
-                        <input type='text' class='form-control weightLimitOfBox' placeholder='Weight Limit of Box. Default 35'>\
-                      </div>\
-                "));
+  this.$row = $('<div>', { class: 'row' })
+              .append($("<br>\
+                <div class='col-md-2'>\
+                  <input type='text' class='form-control width' placeholder='Width(mm)'>\
+                </div>\
+                <div class='col-md-2'>\
+                  <input type='text' class='form-control thickness' placeholder='Thickness(mm)'>\
+                </div>\
+                <div class='col-md-2'>\
+                  <input type='text' class='form-control total_length' placeholder='Total Length(m)'>\
+                </div>\
+                <div class='col-md-2'>\
+                  <input type='text' class='form-control lengthPerRole' placeholder='Length of Roll(m)'>\
+                </div>\
+                <div class='col-md-4'>\
+                  <input type='text' style='background: #c1c1c1' class='form-control weightLimitOfBox' placeholder='Weight Limit of Box(kg). Default is 35kg'>\
+                </div>\
+              "));
 }
 
 Size.prototype.rollWeight = function() {
