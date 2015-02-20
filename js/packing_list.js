@@ -36,8 +36,8 @@ PackingList.prototype.createHtml = function() {
     row = this.createRow(this.boxGroups[i]);
     $tableBody.append(row);
   }
-  var $netWeightRow = $('<h4>', { html: 'Net Weight of Order: ' + this.totalNetWeight / 1000 + ' ton' });
-  var $grossWeightRow = $('<h4>', { html: 'Gross Weight of Order: ' + (this.totalNetWeight + 0.9 * this.boxCounter) / 1000 + ' ton' });
+  var $netWeightRow = $('<h4>', { html: 'Net Weight of Order: ' + (this.totalNetWeight / 1000).toFixed(3) + ' ton' });
+  var $grossWeightRow = $('<h4>', { html: 'Gross Weight of Order: ' + ((this.totalNetWeight + 0.9 * this.boxCounter) / 1000).toFixed(3) + ' ton' });
   return $table.append($tableBody.append($netWeightRow).append($grossWeightRow));
 }
 
