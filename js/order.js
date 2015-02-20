@@ -30,7 +30,7 @@ Order.prototype.createPackingList = function() {
   $packingListDiv.empty();
   $packingListDiv.append($packingList.createHtml());
   var newWindow = window.open('');
-  newWindow.document.write('<link rel="stylesheet" href="./css/bootstrap.min.css">');
+  newWindow.document.write('<link rel="stylesheet" href="./css/bootstrap.min.css"><script src="./js/jquery-2.1.3.js"></script>');
   newWindow.document.write($packingListDiv.get(0).outerHTML);
 }
 
