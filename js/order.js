@@ -21,6 +21,11 @@ Order.prototype.addSize = function() {
   this.sizes.push($size);
   $size.$row.get(0).scrollIntoView();
   $size.$row.find('.width').focus();
+  var _this = this;
+  $size.$row.find('.close').on('click', function() {
+    $size.$row.remove();
+    _this.sizes.splice(_this.sizes[_this.sizes.indexOf($size)], 1);
+  });
 }
 
 Order.prototype.createPackingList = function() {
@@ -41,4 +46,8 @@ $(function() {
   order.sizes.push(firstSize);
   order.$order.append(firstSize.$row)
   firstSize.$row.find('.width').focus();
+  firstSize.$row.find('.close').on('click', function() {
+    firstSize.$row.remove();
+    order.sizes.splice(order.sizes[order.sizes.indexOf(firstSize)], 1);
+  })
 });

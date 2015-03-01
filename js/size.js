@@ -13,8 +13,11 @@ function Size() {
                 <div class='col-md-2'>\
                   <input type='text' class='form-control lengthPerRole' placeholder='Length of Roll(m)'>\
                 </div>\
-                <div class='col-md-4'>\
+                <div class='col-md-3'>\
                   <input type='text' style='background: #c1c1c1' class='form-control weightLimitOfBox' placeholder='Weight Limit of Box(kg). Default is 35kg'>\
+                </div>\
+                <div class='col-md-1'>\
+                  <button type='button' class='close'>&times;</button>\
                 </div>\
               "));
 }
