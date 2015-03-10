@@ -57,10 +57,10 @@ PackingList.prototype.createRow = function(boxGroup) {
   tr.append($('<td>').html(boxGroup.noOfBoxes));
   tr.append($('<td>').html(netWeightOfBox.toFixed(2)));
   tr.append($('<td>').html(grossWeightOfBox.toFixed(2)));
-  tr.append($('<td>').html(boxGroup.noOfRollsPerBox));
-  tr.append($('<td>').html(boxGroup.lengthPerBox));
-  tr.append($('<td>').html(boxGroup.noOfRollsPerBox * boxGroup.noOfBoxes));
-  tr.append($('<td>').html(boxGroup.lengthPerBox * boxGroup.noOfBoxes));
+  tr.append($('<td>').html(boxGroup.noOfRollsPerBox.toFixed(2)));
+  tr.append($('<td>').html(boxGroup.lengthPerBox.toFixed(2)));
+  tr.append($('<td>').html((boxGroup.noOfRollsPerBox * boxGroup.noOfBoxes).toFixed(2)));
+  tr.append($('<td>').html((boxGroup.lengthPerBox * boxGroup.noOfBoxes).toFixed(2)));
   tr.append($('<td>').html([boxGroup.boxLength, boxGroup.boxWidth, boxGroup.boxHeight.toFixed(2)].join(' x ')));
   tr.append($('<td>').html(boxGroup.noOfBoxes));
   return tr;

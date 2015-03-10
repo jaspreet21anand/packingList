@@ -22,11 +22,13 @@ BoxGroup.prototype.createBoxGroups = function() {
   this.$packingList.boxCounter += (this.noOfBoxes - 1);
   this.totalLengthInGroup = this.lengthPerBox * this.noOfBoxes;
   this.netWeightOfEachBox = this.$size.rollWeight() * this.noOfRollsPerBox;
-  var lengthBreadth = BoxDimensions[this.$size.rollThickness()][this.$size.rollLength() * 100];
-  if(lengthBreadth){
-    this.boxLength = lengthBreadth;
-  } else{
-    this.boxLength = BoxDimensions[parseInt(this.$size.rollThickness())][this.$size.rollLength() * 100];
+  var thicknessHash = BoxDimensions[this.$size.rollThickness()];
+  if(!thicknessHash){
+    thicknessHash = BoxDimensions[parseInt(this.$size.rollThickness())]
+  }
+  this.boxLength = thicknessHash[this.$size.rollLength() * 100];
+  if(!(this.boxLength)) {
+    this.boxLength = thicknessHash[parseInt(this.$size.rollLength()) * 100];
   }
   this.boxWidth = this.boxLength;
   this.boxHeight = this.noOfRollsPerBox * this.$size.rollWidth() * 0.0393701;
@@ -40,11 +42,13 @@ BoxGroup.prototype.createBoxGroups = function() {
     loneBox.startingBox = ++this.$packingList.boxCounter;
     loneBox.totalLengthInGroup = loneBox.lengthPerBox;
     loneBox.netWeightOfEachBox = loneBox.$size.rollWeight() * loneBox.noOfRollsPerBox;
-    var lengthBreadth = BoxDimensions[this.$size.rollThickness()][this.$size.rollLength() * 100];
-    if(lengthBreadth){
-      this.boxLength = lengthBreadth;
-    } else{
-      this.boxLength = BoxDimensions[parseInt(this.$size.rollThickness())][this.$size.rollLength() * 100];
+    var thicknessHash = BoxDimensions[loneBox.$size.rollThickness()];
+    if(!thicknessHash){
+      thicknessHash = BoxDimensions[parseInt(loneBox.$size.rollThickness())]
+    }
+    loneBox.boxLength = thicknessHash[loneBox.$size.rollLength() * 100];
+    if (!(loneBox.boxLength)) {
+      loneBox.boxLength = thicknessHash[parseInt(loneBox.$size.rollLength()) * 100];
     }
     loneBox.boxWidth = loneBox.boxLength;
     loneBox.boxHeight = loneBox.noOfRollsPerBox * loneBox.$size.rollWidth() * 0.0393701;

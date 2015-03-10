@@ -27,23 +27,23 @@ Size.prototype.rollWeight = function() {
 }
 
 Size.prototype.rollWidth = function() {
-  return parseInt(this.$row.find('.width').first().val());
+  return parseFloat(this.$row.find('.width').first().val());
 }
 
 Size.prototype.rollThickness = function() {
-  return parseInt(this.$row.find('.thickness').first().val());
+  return parseFloat(this.$row.find('.thickness').first().val());
 }
 
 Size.prototype.rollLength = function() {
-  return parseInt(this.$row.find('.lengthPerRole').first().val());
+  return parseFloat(this.$row.find('.lengthPerRole').first().val());
 }
 
 Size.prototype.totalLength = function() {
-  return parseInt(this.$row.find('.total_length').first().val());
+  return parseFloat(this.$row.find('.total_length').first().val());
 }
 
 Size.prototype.weightLimitOfBox = function() {
-  var weightLimit = parseInt(this.$row.find('.weightLimitOfBox').first().val());
+  var weightLimit = parseFloat(this.$row.find('.weightLimitOfBox').first().val());
   if(!!weightLimit) {
     return weightLimit;
   } else {
