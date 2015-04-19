@@ -23,7 +23,7 @@ function Size() {
 }
 
 Size.prototype.rollWeight = function() {
-  return 0.0019 * this.rollWidth() * this.rollThickness() * this.rollLength();
+  return 0.00195 * this.rollWidth() * this.rollThickness() * this.rollLength();
 }
 
 Size.prototype.rollWidth = function() {

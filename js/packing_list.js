@@ -26,6 +26,7 @@ PackingList.prototype.createHtml = function() {
     .append($('<th>').html('Sheets In Each Box'))
     .append($('<th>').html('Length In Each Box(meter)'))
     .append($('<th>').html('Total Sheets'))
+    .append($('<th>').html('Length of Sheet(meter)'))
     .append($('<th>').html('Total Length(meter)'))
     .append($('<th>').html('Box Dimensions(inch)'))
     .append($('<th>').html('No of Boxes'));
@@ -60,6 +61,7 @@ PackingList.prototype.createRow = function(boxGroup) {
   tr.append($('<td>').html(boxGroup.noOfRollsPerBox.toFixed(2)));
   tr.append($('<td>').html(boxGroup.lengthPerBox.toFixed(2)));
   tr.append($('<td>').html((boxGroup.noOfRollsPerBox * boxGroup.noOfBoxes).toFixed(2)));
+  tr.append($('<td>').html(boxGroup.$size.rollLength()));
   tr.append($('<td>').html((boxGroup.lengthPerBox * boxGroup.noOfBoxes).toFixed(2)));
   tr.append($('<td>').html([boxGroup.boxLength, boxGroup.boxWidth, boxGroup.boxHeight.toFixed(2)].join(' x ')));
   tr.append($('<td>').html(boxGroup.noOfBoxes));
