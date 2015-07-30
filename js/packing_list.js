@@ -28,7 +28,10 @@ PackingList.prototype.createHtml = function() {
     .append($('<th>').html('Total Sheets'))
     .append($('<th>').html('Length of Sheet(meter)'))
     .append($('<th>').html('Total Length(meter)'))
-    .append($('<th>').html('Box Dimensions(inch)'))
+    .append($('<th>').html('Box Length(inch)'))
+    .append($('<th>').html('Box Breadth(inch)'))
+    .append($('<th>').html('Box Height(inch)'))
+    .append($('<th>').html('CVM'))
     .append($('<th>').html('No of Boxes'));
   $table.append($tableHead);
   var sizes = this.$order.sizes;
@@ -63,7 +66,10 @@ PackingList.prototype.createRow = function(boxGroup) {
   tr.append($('<td>').html((boxGroup.noOfRollsPerBox * boxGroup.noOfBoxes).toFixed(2)));
   tr.append($('<td>').html(boxGroup.$size.rollLength()));
   tr.append($('<td>').html((boxGroup.lengthPerBox * boxGroup.noOfBoxes).toFixed(2)));
-  tr.append($('<td>').html([boxGroup.boxLength, boxGroup.boxWidth, boxGroup.boxHeight.toFixed(2)].join(' x ')));
+  tr.append($('<td>').html(boxGroup.boxLength));
+  tr.append($('<td>').html(boxGroup.boxWidth));
+  tr.append($('<td>').html(boxGroup.boxHeight.toFixed(2)));
+  tr.append($('<td>').html(boxGroup.boxLength * boxGroup.boxWidth * boxGroup.boxHeight.toFixed(2) * boxGroup.noOfBoxes * 0.000016387));
   tr.append($('<td>').html(boxGroup.noOfBoxes));
   return tr;
 }
