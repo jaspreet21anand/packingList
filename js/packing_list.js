@@ -47,6 +47,9 @@ PackingList.prototype.createHtml = function() {
 
 PackingList.prototype.createRow = function(boxGroup) {
   tr = $('<tr>');
+  if(boxGroup.$size.isWireBacked()) {
+    tr.css('background-color', 'cyan');
+  }
   if(boxGroup.noOfBoxes == 1) {
     var boxNumberString = boxGroup.startingBox;
   } else {
@@ -69,7 +72,7 @@ PackingList.prototype.createRow = function(boxGroup) {
   tr.append($('<td>').html(boxGroup.boxLength));
   tr.append($('<td>').html(boxGroup.boxWidth));
   tr.append($('<td>').html(boxGroup.boxHeight.toFixed(2)));
-  tr.append($('<td>').html(boxGroup.boxLength * boxGroup.boxWidth * boxGroup.boxHeight.toFixed(2) * boxGroup.noOfBoxes * 0.000016387));
+  tr.append($('<td>').html((boxGroup.boxLength * boxGroup.boxWidth * boxGroup.boxHeight.toFixed(2) * boxGroup.noOfBoxes * 0.000016387).toFixed(5)));
   tr.append($('<td>').html(boxGroup.noOfBoxes));
   return tr;
 }

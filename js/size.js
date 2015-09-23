@@ -13,10 +13,12 @@ function Size() {
                 <div class='col-md-2'>\
                   <input type='text' class='form-control lengthPerRole' placeholder='Length of Roll(m)'>\
                 </div>\
-                <div class='col-md-3'>\
+                <div class='col-md-2'>\
                   <input type='text' style='background: #c1c1c1' class='form-control weightLimitOfBox' placeholder='Weight Limit of Box(kg). Default is 35kg'>\
                 </div>\
-                <div class='col-md-1'>\
+                <div class='col-md-2'>\
+                  <label>WireBack?</label>\
+                  <input type='checkbox' class='is-wire-back'>\
                   <button type='button' class='close'>&times;</button>\
                 </div>\
               "));
@@ -36,6 +38,10 @@ Size.prototype.rollThickness = function() {
 
 Size.prototype.rollLength = function() {
   return parseFloat(this.$row.find('.lengthPerRole').first().val());
+}
+
+Size.prototype.isWireBacked = function() {
+  return this.$row.find('.is-wire-back').get(0).checked;
 }
 
 Size.prototype.totalLength = function() {

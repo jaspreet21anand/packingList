@@ -11,6 +11,11 @@ function BoxGroup($size, $packingList) {
   this.boxLength = 0;
   this.boxWidth = 0;
   this.boxHeight = 0;
+  if(this.$size.isWireBacked()) {
+    this.boxDimensions = BoxDimensionsWithWiredBack;
+  } else {
+    this.boxDimensions = BoxDimensionsWithoutWiredBack;
+  }
 }
 
 BoxGroup.prototype.createBoxGroups = function() {
@@ -22,9 +27,9 @@ BoxGroup.prototype.createBoxGroups = function() {
   this.$packingList.boxCounter += (this.noOfBoxes - 1);
   this.totalLengthInGroup = this.lengthPerBox * this.noOfBoxes;
   this.netWeightOfEachBox = this.$size.rollWeight() * this.noOfRollsPerBox;
-  var thicknessHash = BoxDimensions[this.$size.rollThickness()];
+  var thicknessHash = this.boxDimensions[this.$size.rollThickness()];
   if(!thicknessHash){
-    thicknessHash = BoxDimensions[parseInt(this.$size.rollThickness())]
+    thicknessHash = this.boxDimensions[parseInt(this.$size.rollThickness())]
   }
   this.boxLength = thicknessHash[this.$size.rollLength() * 100];
   if(!(this.boxLength)) {
@@ -42,9 +47,9 @@ BoxGroup.prototype.createBoxGroups = function() {
     loneBox.startingBox = ++this.$packingList.boxCounter;
     loneBox.totalLengthInGroup = loneBox.lengthPerBox;
     loneBox.netWeightOfEachBox = loneBox.$size.rollWeight() * loneBox.noOfRollsPerBox;
-    var thicknessHash = BoxDimensions[loneBox.$size.rollThickness()];
+    var thicknessHash = this.boxDimensions[loneBox.$size.rollThickness()];
     if(!thicknessHash){
-      thicknessHash = BoxDimensions[parseInt(loneBox.$size.rollThickness())]
+      thicknessHash = this.boxDimensions[parseInt(loneBox.$size.rollThickness())]
     }
     loneBox.boxLength = thicknessHash[loneBox.$size.rollLength() * 100];
     if (!(loneBox.boxLength)) {
