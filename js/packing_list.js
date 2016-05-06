@@ -19,20 +19,22 @@ PackingList.prototype.createHtml = function() {
   var $tableHead = $('<thead>');
   var $tableBody = $('<tbody>');
   $tableHead.append($('<th>').html('Box Numbers'))
-    .append($('<th>').html('Dimensions(mm)'))
-    .append($('<th>').html('Total Boxes'))
-    .append($('<th>').html('Net Weight(Kg)'))
-    .append($('<th>').html('Gross Weight(Kg)'))
-    .append($('<th>').html('Sheets In Each Box'))
-    .append($('<th>').html('Length In Each Box(meter)'))
-    .append($('<th>').html('Total Sheets'))
-    .append($('<th>').html('Length of Sheet(meter)'))
-    .append($('<th>').html('Total Length(meter)'))
+    .append($('<th>').html('Width(mm)'))
+    .append($('<th>').html(''))
+    .append($('<th>').html('Thickness(mm)'))
+    .append($('<th>').html('Color'))
+    .append($('<th>').html('Length(meter)'))
+    .append($('<th>').html('No. of Rolls'))
+    .append($('<th>').html('Total Meters'))
+    .append($('<th>').html('Mtrs In Each Box(meter)'))
+    .append($('<th>').html('No of Boxes'))
+    .append($('<th>').html('Rolls In Each Box'))
+    .append($('<th>').html('Box Weight(Kg)'))
     .append($('<th>').html('Box Length(inch)'))
     .append($('<th>').html('Box Breadth(inch)'))
     .append($('<th>').html('Box Height(inch)'))
-    .append($('<th>').html('CVM'))
-    .append($('<th>').html('No of Boxes'));
+    .append($('<th>').html('Net Weight(Kg)'))
+    .append($('<th>').html('CVM'));
   $table.append($tableHead);
   var sizes = this.$order.sizes;
   var row = null;
@@ -59,20 +61,21 @@ PackingList.prototype.createRow = function(boxGroup) {
   this.totalNetWeight += netWeightOfBox * boxGroup.noOfBoxes;
   var grossWeightOfBox = netWeightOfBox + 0.9;
   tr.append($('<td>').html(boxNumberString));
-  var dimensionString = [boxGroup.$size.rollWidth(), 'x', boxGroup.$size.rollThickness()].join(' ');
-  tr.append($('<td>').html(dimensionString));
-  tr.append($('<td>').html(boxGroup.noOfBoxes));
-  tr.append($('<td>').html(netWeightOfBox.toFixed(2)));
-  tr.append($('<td>').html(grossWeightOfBox.toFixed(2)));
-  tr.append($('<td>').html(boxGroup.noOfRollsPerBox.toFixed(2)));
-  tr.append($('<td>').html(boxGroup.lengthPerBox.toFixed(2)));
-  tr.append($('<td>').html((boxGroup.noOfRollsPerBox * boxGroup.noOfBoxes).toFixed(2)));
+  tr.append($('<td>').html(boxGroup.$size.rollWidth()));
+  tr.append($('<td>').html('x'));
+  tr.append($('<td>').html(boxGroup.$size.rollThickness()));
+  tr.append($('<td>').html('')); //color
   tr.append($('<td>').html(boxGroup.$size.rollLength()));
+  tr.append($('<td>').html((boxGroup.noOfRollsPerBox * boxGroup.noOfBoxes).toFixed(2)));
   tr.append($('<td>').html((boxGroup.lengthPerBox * boxGroup.noOfBoxes).toFixed(2)));
+  tr.append($('<td>').html(boxGroup.lengthPerBox.toFixed(2)));
+  tr.append($('<td>').html(boxGroup.noOfBoxes));
+  tr.append($('<td>').html(boxGroup.noOfRollsPerBox.toFixed(2)));
+  tr.append($('<td>').html(netWeightOfBox.toFixed(2)));
   tr.append($('<td>').html(boxGroup.boxLength));
   tr.append($('<td>').html(boxGroup.boxWidth));
   tr.append($('<td>').html(boxGroup.boxHeight.toFixed(2)));
+  tr.append($('<td>').html(netWeightOfBox.toFixed(2) * boxGroup.noOfBoxes));
   tr.append($('<td>').html((boxGroup.boxLength * boxGroup.boxWidth * boxGroup.boxHeight.toFixed(2) * boxGroup.noOfBoxes * 0.000016387).toFixed(5)));
-  tr.append($('<td>').html(boxGroup.noOfBoxes));
   return tr;
 }

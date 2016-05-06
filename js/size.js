@@ -14,7 +14,16 @@ function Size() {
                   <input type='text' class='form-control lengthPerRole' placeholder='Length of Roll(m)'>\
                 </div>\
                 <div class='col-md-2'>\
-                  <input type='text' style='background: #c1c1c1' class='form-control weightLimitOfBox' placeholder='Weight Limit of Box(kg). Default is 35kg'>\
+                  <div class='row'>\
+                    <div class='col-md-12'>\
+                      <input type='text' style='background: #c1c1c1' class='form-control weightLimitOfBox' placeholder='Weight Limit=35kg'>\
+                    </div>\
+                  </div>\
+                  <div class='row'>\
+                    <div class='col-md-12'>\
+                      <input type='text' style='background: #c1c1c1' class='form-control heightFactor' placeholder='HeightFactor=25.4'>\
+                    </div>\
+                  </div>\
                 </div>\
                 <div class='col-md-2'>\
                   <label>WireBack?</label>\
@@ -54,6 +63,15 @@ Size.prototype.weightLimitOfBox = function() {
     return weightLimit;
   } else {
     return 35;
+  }
+}
+
+Size.prototype.heightFactor = function() {
+  var factor = parseFloat(this.$row.find('.heightFactor').first().val());
+  if(!!factor) {
+    return factor;
+  } else {
+    return 25.4
   }
 }
 
