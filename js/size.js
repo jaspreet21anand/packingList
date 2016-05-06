@@ -24,6 +24,11 @@ function Size() {
                       <input type='text' style='background: #c1c1c1' class='form-control heightFactor' placeholder='HeightFactor=25.4'>\
                     </div>\
                   </div>\
+                  <div class='row'>\
+                    <div class='col-md-12'>\
+                      <input type='text' style='background: #c1c1c1' class='form-control boxDimension' placeholder='BoxDimension=lookup'>\
+                    </div>\
+                  </div>\
                 </div>\
                 <div class='col-md-2'>\
                   <label>WireBack?</label>\
@@ -73,6 +78,10 @@ Size.prototype.heightFactor = function() {
   } else {
     return 25.4
   }
+}
+
+Size.prototype.boxDimension = function() {
+  return parseInt(this.$row.find('.boxDimension').first().val());
 }
 
 Size.prototype.totalBoxes = function() {

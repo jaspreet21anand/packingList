@@ -31,7 +31,12 @@ BoxGroup.prototype.createBoxGroups = function() {
   if(!thicknessHash){
     thicknessHash = this.boxDimensions[parseInt(this.$size.rollThickness())]
   }
-  this.boxLength = thicknessHash[this.$size.rollLength() * 100];
+  var boxDimension = this.$size.boxDimension();
+  if(!!boxDimension) {
+    this.boxLength = boxDimension;
+  } else {
+    this.boxLength = thicknessHash[this.$size.rollLength() * 100];
+  }
   if(!(this.boxLength)) {
     this.boxLength = thicknessHash[parseInt(this.$size.rollLength()) * 100];
   }
@@ -51,7 +56,12 @@ BoxGroup.prototype.createBoxGroups = function() {
     if(!thicknessHash){
       thicknessHash = this.boxDimensions[parseInt(loneBox.$size.rollThickness())]
     }
-    loneBox.boxLength = thicknessHash[loneBox.$size.rollLength() * 100];
+    var boxDimension = loneBox.$size.boxDimension();
+    if(!!boxDimension) {
+      loneBox.boxLength = boxDimension;
+    } else {
+      loneBox.boxLength = thicknessHash[loneBox.$size.rollLength() * 100];
+    }
     if (!(loneBox.boxLength)) {
       loneBox.boxLength = thicknessHash[parseInt(loneBox.$size.rollLength()) * 100];
     }
