@@ -75,7 +75,7 @@ PackingList.prototype.createRow = function(boxGroup) {
   tr.append($('<td>').html(boxGroup.boxLength));
   tr.append($('<td>').html(boxGroup.boxWidth));
   tr.append($('<td>').html(boxGroup.boxHeight.toFixed(2)));
-  tr.append($('<td>').html(netWeightOfBox.toFixed(2) * boxGroup.noOfBoxes));
+  tr.append($('<td>').html((netWeightOfBox * boxGroup.noOfBoxes).toFixed(2)));
   tr.append($('<td>').html((boxGroup.boxLength * boxGroup.boxWidth * boxGroup.boxHeight.toFixed(2) * boxGroup.noOfBoxes * 0.000016387).toFixed(5)));
   return tr;
 }

@@ -66,6 +66,6 @@ BoxGroup.prototype.createBoxGroups = function() {
       loneBox.boxLength = thicknessHash[parseInt(loneBox.$size.rollLength()) * 100];
     }
     loneBox.boxWidth = loneBox.boxLength;
-    loneBox.boxHeight = loneBox.noOfRollsPerBox * loneBox.$size.rollWidth() * 0.0393701;
+    loneBox.boxHeight = loneBox.noOfRollsPerBox * loneBox.$size.rollWidth() / loneBox.$size.heightFactor();
   }
 }
