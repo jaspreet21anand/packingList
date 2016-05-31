@@ -41,7 +41,8 @@ BoxGroup.prototype.createBoxGroups = function() {
     this.boxLength = thicknessHash[parseInt(this.$size.rollLength()) * 100];
   }
   this.boxWidth = this.boxLength;
-  this.boxHeight = this.noOfRollsPerBox * this.$size.rollWidth() / this.$size.heightFactor();
+  var heightBuffer = this.noOfRollsPerBox * 1.5 / 25.4; //buffer in height as 1.5mm per role
+  this.boxHeight = heightBuffer + (this.noOfRollsPerBox * this.$size.rollWidth() / this.$size.heightFactor());
 
   if(!(numberOfBoxesInFloat % 1 == 0)) {
     var loneBox = new BoxGroup(this.$size, this.$packingList);
